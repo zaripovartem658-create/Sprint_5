@@ -26,6 +26,7 @@ class TestStellarBurgersProfileForm:
         
         driver.find_element(*MainPage.mn_constructor_button).click()
 
+        # Ищем конкретный элемент по локатору прямо в assert
         assert WebDriverWait(driver, 5).until(
             EC.visibility_of_element_located(MainPage.mn_constructor_title)
         )
@@ -39,6 +40,7 @@ class TestStellarBurgersProfileForm:
         
         driver.find_element(*MainPage.mn_logo).click()
 
+        # Ищем конкретный элемент по локатору прямо в assert
         assert WebDriverWait(driver, 5).until(
             EC.visibility_of_element_located(MainPage.mn_constructor_title)
         )
