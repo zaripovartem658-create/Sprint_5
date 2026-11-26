@@ -4,34 +4,36 @@ from web_locators.locators import *
 class TestStellarBurgersConstructorForm:
 
     def test_constructor_go_to_sauces_scroll_to_sauces(self, login):
-        """Перехода на "Соусы" """
+        """Переход на вкладку "Соусы" """
         driver = login
 
         driver.find_element(*MainPage.mn_constructor_button).click()
-        driver.find_element(*MainPage.mn_sauces_button).click()
+        
+        sauces_tab = driver.find_element(*MainPage.mn_sauces_button)
+        sauces_tab.click()
 
-        h_sauce = driver.find_element(*MainPage.mn_h_sauces)
-
-        assert h_sauce.text == 'Соусы'
+        assert 'tab_tab_type_current' in sauces_tab.get_attribute('class')
 
     def test_constructor_go_to_filling_scroll_to_filling(self, login):
-        """Перехода на "Начинки" """
+        """Переход на вкладку "Начинки" """
         driver = login
 
         driver.find_element(*MainPage.mn_constructor_button).click()
-        driver.find_element(*MainPage.mn_filling_button).click()
-        h_filling = driver.find_element(*MainPage.mn_h_filling)
+        
+        filling_tab = driver.find_element(*MainPage.mn_filling_button)
+        filling_tab.click()
 
-        assert h_filling.text == 'Начинки'
+        assert 'tab_tab_type_current' in filling_tab.get_attribute('class')
 
     def test_constructor_go_to_bun_scroll_to_bun(self, login):
-        """Перехода на "Булки" """
+        """Переход на вкладку "Булки" """
         driver = login
 
         driver.find_element(*MainPage.mn_constructor_button).click()
+        
         driver.find_element(*MainPage.mn_filling_button).click()
-        driver.find_element(*MainPage.mn_ban_button).click()
+        
+        bun_tab = driver.find_element(*MainPage.mn_ban_button)
+        bun_tab.click()
 
-        h_ban = driver.find_element(*MainPage.mn_h_ban)
-
-        assert h_ban.text == 'Булки'
+        assert 'tab_tab_type_current' in bun_tab.get_attribute('class')
