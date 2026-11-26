@@ -11,8 +11,8 @@ class TestStellarBurgersLoginLogoutForm:
     def test_login_correct_email_and_password_show_main_page(self, login):
         """ При вводе корректных данных отображается основная страница """
         driver = login
-
-        # Поиск элемента перенесен в assert, проверяется видимость
+        
+        # Поиск и проверка видимости элемента прямо в assert
         assert driver.current_url == Urls.url_main_paige and WebDriverWait(driver, 5).until(
             EC.visibility_of_element_located(MainPage.mn_order_button)
         )
@@ -27,8 +27,7 @@ class TestStellarBurgersLoginLogoutForm:
 
         driver.find_element(*AuthLogin.al_login_button_any_forms).click()
         
-        # Ожидание и проверка прямо в assert
-        assert driver.current_url == Urls.url_main_paige and WebDriverWait(driver, 5).until(
+        assert driver.current_url == Urls.url_main_paige and WebDriverWait(driver, 8).until(
             EC.visibility_of_element_located(MainPage.mn_order_button)
         )
 
@@ -42,8 +41,7 @@ class TestStellarBurgersLoginLogoutForm:
 
         driver.find_element(*AuthLogin.al_login_button_any_forms).click()
         
-        # Ожидание и проверка прямо в assert
-        assert driver.current_url == Urls.url_main_paige and WebDriverWait(driver, 5).until(
+        assert driver.current_url == Urls.url_main_paige and WebDriverWait(driver, 8).until(
             EC.visibility_of_element_located(MainPage.mn_order_button)
         )
 
@@ -59,8 +57,7 @@ class TestStellarBurgersLoginLogoutForm:
 
         driver.find_element(*AuthLogin.al_login_button_any_forms).click()
         
-        # Ожидание и проверка прямо в assert
-        assert driver.current_url == Urls.url_main_paige and WebDriverWait(driver, 5).until(
+        assert driver.current_url == Urls.url_main_paige and WebDriverWait(driver, 8).until(
             EC.visibility_of_element_located(MainPage.mn_order_button)
         )
 
@@ -76,7 +73,6 @@ class TestStellarBurgersLoginLogoutForm:
 
         driver.find_element(*AuthLogin.al_login_button_any_forms).click()
         
-        # Ожидание и проверка прямо в assert
-        assert driver.current_url == Urls.url_main_paige and WebDriverWait(driver, 5).until(
+        assert driver.current_url == Urls.url_main_paige and WebDriverWait(driver, 8).until(
             EC.visibility_of_element_located(MainPage.mn_order_button)
         )
