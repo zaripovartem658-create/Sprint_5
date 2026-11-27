@@ -1,5 +1,4 @@
 import pytest
-import time
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -28,13 +27,13 @@ class TestStellarBurgersRegistration:
         """ При пустом поле Имя ничего не происходит: ошибки и перехода на страницу входа нет """
         driver.get(Urls.url_register)
 
-        # Используем данные из модуля данных
         driver.find_element(*AuthRegistre.ar_email_field).send_keys(ValidData.login)
         driver.find_element(*AuthRegistre.ar_password_field).send_keys(ValidData.password)
 
         driver.find_element(*AuthRegistre.ar_register_button).click()
+        
+        
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(AuthRegistre.ar_register_button))
-        time.sleep(2)
         
         assert driver.current_url == Urls.url_register and len(
             driver.find_elements(*AuthRegistre.ar_error_message)
@@ -51,7 +50,6 @@ class TestStellarBurgersRegistration:
 
         driver.find_element(*AuthRegistre.ar_register_button).click()
         
-        # Проверяем текст ошибки прямо в assert
         assert WebDriverWait(driver, 5).until(
             EC.visibility_of_element_located(AuthRegistre.ar_error_message_2)
         ).text == 'Такой пользователь уже существует'
@@ -67,7 +65,6 @@ class TestStellarBurgersRegistration:
 
         driver.find_element(*AuthRegistre.ar_register_button).click()
         
-        # Проверяем текст ошибки прямо в assert
         assert WebDriverWait(driver, 5).until(
             EC.visibility_of_element_located(AuthRegistre.ar_error_message)
         ).text == 'Некорректный пароль'
